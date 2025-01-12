@@ -9,12 +9,12 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-// app.use(cors(
-//   {
-//     // origin: "https://mbc-menu.netlify.app",
-//     credentials: true,
-//   }
-// ));
+app.use(cors(
+  {
+    origin: "https://mbc-menu.netlify.app",
+    credentials: true,
+  }
+));
 
 
 app.get("/", (req, res) => {
@@ -27,7 +27,8 @@ app.post("/users/add", async (req, res) => {
     await newUser.save();
     res.status(201).json(newUser);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    // res.status(400).json({ message: error.message });
+    res.send(error)
   }
 });
 
