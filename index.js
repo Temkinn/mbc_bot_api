@@ -43,8 +43,9 @@ app.get("/users", async (req, res) => {
 
 app.post("/users/add", async (req, res) => {
   try {
-    const user = await User.findOne({ id: Number(req.body.id) });
-    if (user) {
+    const id = await User.findOne({ id: Number(req.body.id) });
+    const username = await User.findOne({ username: req.body.username });
+    if (id || username) {
       return res.status(404).json({ message: "User already exists" });
     }
     const newUser = new User(req.body);
