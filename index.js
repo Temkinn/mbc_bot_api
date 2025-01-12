@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
 app.get("/user/:id", async (req, res) => {
   try {
     const user = await User.findOne({ id: Number(req.params.id) });
-    res.send(user);
     console.log("/user/{id} request!");
+    res.send(user);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -34,8 +34,8 @@ app.get("/user/:id", async (req, res) => {
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
-    res.send(users);
     console.log("/users request!");
+    res.send(users);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -49,8 +49,8 @@ app.post("/users/add", async (req, res) => {
     }
     const newUser = new User(req.body);
     await newUser.save();
-    res.status(201).json(newUser);
     console.log("/users/add request!");
+    res.status(201).json(newUser);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -65,8 +65,9 @@ app.put("/users/update/:id", async (req, res) => {
         username: req.body.username,
       }
     );
-    res.status(201).json({ user: user });
     console.log("/users/update/{id} request!");
+    console.log(user);
+    res.status(201).json({ user: user });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -82,8 +83,8 @@ app.put("/user/:id/coins/add", async (req, res) => {
         coins: old_user.coins + req.body.coins,
       }
     );
-    res.status(201).json({ user: user });
     console.log("/user/{id}/coins/add request!");
+    res.status(201).json({ user: user });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -102,8 +103,8 @@ app.put("/user/:id/coins/subtract", async (req, res) => {
         coins: old_user.coins - req.body.coins,
       }
     );
-    res.status(201).json({ user: user });
     console.log("/user/{id}/coins/subtract request!");
+    res.status(201).json({ user: user });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
