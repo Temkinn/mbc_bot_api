@@ -11,7 +11,7 @@ dotenv.config();
 app.use(express.json());
 app.use(cors(
   {
-    origin: "https://mbc-menu.netlify.app",
+    // origin: "https://mbc-menu.netlify.app",
     credentials: true,
   }
 ));
