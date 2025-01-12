@@ -18,7 +18,7 @@ const userSchema = new Schema({
     unique: true,
   },
   coins: {
-    type: String,
+    type: Number,
     default: 0
   },
   createdAt: {
