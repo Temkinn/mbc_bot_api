@@ -31,6 +31,18 @@ app.get("/user/:id", async (req, res) => {
   }
 });
 
+app.get("/users/admins", async (req, res) => {
+  try {
+    const admins = await User.find({
+      isAdmin: true
+    })
+    console.log("/users/admins request!");
+    res.send(admins);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+})
+
 app.get("/users", async (req, res) => {
   try {
     const users = await User.find({});
