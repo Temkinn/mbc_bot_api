@@ -35,9 +35,10 @@ app.get("/users/admins", async (req, res) => {
   try {
     const admins = await User.find({
       isAdmin: true
-    }).id
+    })
     console.log("/users/admins request!");
-    res.send(admins);
+    const admins_id = admins.map((admin) => admin.id)
+    res.send(admins_id);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
