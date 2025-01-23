@@ -35,7 +35,7 @@ app.get("/users/admins", async (req, res) => {
   try {
     const admins = await User.find({
       isAdmin: true
-    })
+    }).id
     console.log("/users/admins request!");
     res.send(admins);
   } catch (error) {
