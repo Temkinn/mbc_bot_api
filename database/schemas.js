@@ -17,9 +17,9 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
-  coins: {
-    type: Number,
-    default: 0
+  isAdmin: {
+    type: Boolean,
+    default: false
   },
   createdAt: {
     type: Date,
